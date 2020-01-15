@@ -1,5 +1,5 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.7" %}
+{% set version = "0.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: aa938dfb84e68e1f645a5543ed2e7eeb2bdc260f751e5a4e8434b25062b7a25f
+  sha256: 2c58d592e93bb8733110a819cb8f06ede91faa1b12c01342e406f1387dc7d919
   patches:
     - 0001-always-build-release.patch
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: 
     - rm -f BUILD
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
