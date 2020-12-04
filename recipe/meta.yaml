@@ -1,5 +1,5 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.8.0" %}
+{% set version = "0.11.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tensorflow/probability/archive/{{ version }}.tar.gz
-  sha256: f6049549f6d6b82962523a6bf61c40c1d0c7ac685f209c0084a6da81dd78181d
+  sha256: 755d38db20a08d1b7d344ca00177e771525e473a6ab0922467b354da5df0a31e
   patches:
     - 0001-always-build-release.patch
 
@@ -28,7 +28,7 @@ requirements:
     - six >=1.10.0
     - decorator
     - cloudpickle >=0.6.1
-    - tensorflow-base >=1.14.0
+    - tensorflow-base >=2.3
 
 test:
   imports:
@@ -58,3 +58,4 @@ extra:
     - adbeda
     - oblute
     - rluria14
+    - Tata17
