@@ -13,6 +13,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [py38]
   script: 
     - rm -f BUILD
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
