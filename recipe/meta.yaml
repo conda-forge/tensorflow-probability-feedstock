@@ -10,9 +10,8 @@ source:
   sha256: 755d38db20a08d1b7d344ca00177e771525e473a6ab0922467b354da5df0a31e
   patches:
     - 0001-always-build-release.patch
-
+ß
 build:
-  noarch: python
   number: 0
   skip: True  # [py38]
   script: 
