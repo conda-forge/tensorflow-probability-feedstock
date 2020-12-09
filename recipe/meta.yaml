@@ -13,17 +13,16 @@ source:
 
 build:
   number: 0
-  skip: True  # [py38]
   script: 
     - rm -f BUILD
     - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
-    - python
+    - python >=3.5
     - pip
   run:
-    - python
+    - python >=3.5
     - pip
     - numpy >=1.16.0,<1.19.0
     - six >=1.12.0
