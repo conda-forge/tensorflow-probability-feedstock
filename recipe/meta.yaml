@@ -12,6 +12,7 @@ source:
     - 0001-always-build-release.patch
 
 build:
+  noarch: python
   skip: True  # [py38]
   number: 0
   script: 
@@ -20,17 +21,20 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
+    - python >=3.6
     - pip
-    - numpy
-    - six
-    - decorator
-    - cloudpickle
-    - tensorflow
-
+    - numpy >=1.16.0
+    - six >=1.15.0
+    - decorator >=4.4.2
+    - cloudpickle >=1.2.2
+    - dm-tree >=0.1.5
+    - gast >=0.3.3
+    - bazel >=3.7.0
+    - setuptools >=41.0.0
+    
 test:
   imports:
     - tensorflow_probability
