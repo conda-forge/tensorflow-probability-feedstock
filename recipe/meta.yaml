@@ -31,7 +31,7 @@ requirements:
     - dm-tree >=0.1.5
     - gast >=0.3.3
     - bazel >=3.7.0
-    - setuptools >=41.0.
+    - setuptools >=41.0.0
     - tensorflow-base >=1.14.0
 
 test:
