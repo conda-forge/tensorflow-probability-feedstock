@@ -12,7 +12,7 @@ source:
     - 0001-always-build-release.patch
 
 build:
-  skip: True  # [py38]
+  noarch: python
   number: 0
   script: 
     - rm -f BUILD
@@ -33,6 +33,7 @@ requirements:
     - gast >=0.3.3
     - bazel >=3.7.0
     - setuptools >=41.0.
+    - tensorflow-base >=1.14.0
 
 test:
   imports:
