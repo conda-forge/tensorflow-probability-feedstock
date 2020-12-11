@@ -24,7 +24,6 @@ requirements:
     - pip
   run:
     - python >=3.6,<3.8
-    - pip
     - numpy >=1.16.0
     - six >=1.15.0
     - decorator >=4.4.2
