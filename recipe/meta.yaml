@@ -23,12 +23,8 @@ requirements:
     - python
     - pip
   run:
-    - six >=1.10.0
-    - numpy >=1.13.3
-    - decorator
-    - cloudpickle >=1.2.2
-    - gast >=0.2
     - tensorflow >=2.1
+    - python =3.6
 
 test:
   imports:
