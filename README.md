@@ -130,6 +130,7 @@ Feedstock Maintainers
 
 * [@adbeda](https://github.com/adbeda/)
 * [@mayou36](https://github.com/mayou36/)
+* [@mxr-conda](https://github.com/mxr-conda/)
 * [@oblute](https://github.com/oblute/)
 * [@rluria14](https://github.com/rluria14/)
 * [@sodre](https://github.com/sodre/)
