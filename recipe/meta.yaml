@@ -1,19 +1,19 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.12.2" %}
+{% set version = "0.13.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: a17fbb55599862d934dc3632424a9bb4ca527795e711adfeb5f5e0a63e908a2a
+  url: https://github.com/tensorflow/probability/archive/{{ version }}.tar.gz
+  sha256: 3b36775c593639d7e04776293fd9adb3e34ca1a559b9a4f7e2d42a4b4289021c
   patches:
     - 0001-always-build-release.patch
 
 build:
   noarch: python
-  number: 1
+  number: 0
   # The upstream directions say to use bazel, but this is
   # all bazel ends up doing. Since our bazel package can have
   # glibc version issues on CI, just do things this way.
