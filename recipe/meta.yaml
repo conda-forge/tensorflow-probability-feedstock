@@ -1,5 +1,5 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.15.0" %}
+{% set version = "0.16.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: 0cfe69fd2169cd756ed5dc37a80eed2be2576b9553712303b323619b64ed9a11
+  sha256: 0c8b8bb00403af56979f5c5cfda6fb3ea6f3e5efc4530ab66889415d230ebd81
   patches:
     - 0001-always-build-release.patch
 
