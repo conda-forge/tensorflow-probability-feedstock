@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   # The upstream directions say to use bazel, but this is
   # all bazel ends up doing. Since our bazel package can have
   # glibc version issues on CI, just do things this way.
@@ -30,7 +30,9 @@ requirements:
     # NOTE: tf is currently pulled in from defaults,
     #       so we have flexible channel priority set
     #       in conda-forge.yml
-    - tensorflow-base >=2.8,<2.9  # what is actual version needed?
+    # tested and stable against TensorFlow version 2.9.1
+    # https://github.com/tensorflow/probability/releases/tag/v0.17.0
+    - tensorflow-base >=2.9.1  # keep interval open
     - jax ~=0.3.0
     - numpy >=1.13.3
     - absl-py
