@@ -32,7 +32,7 @@ requirements:
     #       in conda-forge.yml
     # tested and stable against TensorFlow version 2.9.1
     # https://github.com/tensorflow/probability/releases/tag/v0.17.0
-    - tensorflow-base >=2.9.1  # keep interval open
+    - tensorflow-base >=2.9.1,<2.10
     - jax ~=0.3.0
     - numpy >=1.13.3
     - absl-py
