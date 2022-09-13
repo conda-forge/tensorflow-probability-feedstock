@@ -23,17 +23,18 @@ build:
 
 requirements:
   host:
-    - python >=3
+    - python >=3.7
     - pip
   run:
-    - python >=3
+    - python >=3.7
     # NOTE: tf is currently pulled in from defaults,
     #       so we have flexible channel priority set
     #       in conda-forge.yml
-    # tested and stable against TensorFlow version 2.10
+    # tested and stable against TensorFlow version 2.10 and jax 0.3.17
     # https://github.com/tensorflow/probability/releases/tag/v0.18.0
     - tensorflow-base ~=2.10.0
-    - jax ~=0.3.0
+    - jax ==0.3.17
+    - jaxlib
     - numpy >=1.13.3
     - absl-py
     - six >=1.10.0
