@@ -34,7 +34,6 @@ requirements:
     # https://github.com/tensorflow/probability/releases/tag/v0.18.0
     - tensorflow-base ~=2.10.0
     - jax ==0.3.17
-    - jaxlib
     - numpy >=1.13.3
     - absl-py
     - six >=1.10.0
