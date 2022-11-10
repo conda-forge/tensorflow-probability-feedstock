@@ -1,5 +1,5 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.17.0" %}
+{% set version = "0.18.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: 4eeb4d67159bc0196b5eb3133f83364b146f7cd31cb4d6c23cbe20cb3e7c1b12
+  sha256: f4852c0fea9117333ccb868f7a2ca75aecf5dd765dc39fd4ee5f8ab6fe87e909
   patches:
     - 0001-always-build-release.patch
 
 build:
   noarch: python
-  number: 1
+  number: 0
   # The upstream directions say to use bazel, but this is
   # all bazel ends up doing. Since our bazel package can have
   # glibc version issues on CI, just do things this way.
@@ -23,17 +23,17 @@ build:
 
 requirements:
   host:
-    - python >=3
+    - python >=3.7
     - pip
   run:
-    - python >=3
+    - python >=3.7
     # NOTE: tf is currently pulled in from defaults,
     #       so we have flexible channel priority set
     #       in conda-forge.yml
-    # tested and stable against TensorFlow version 2.9.1
-    # https://github.com/tensorflow/probability/releases/tag/v0.17.0
-    - tensorflow-base >=2.9.1,<2.10
-    - jax ~=0.3.0
+    # tested and stable against TensorFlow version 2.10 and jax 0.3.17
+    # https://github.com/tensorflow/probability/releases/tag/v0.18.0
+    - tensorflow-base ~=2.10.0
+    - jax ==0.3.17
     - numpy >=1.13.3
     - absl-py
     - six >=1.10.0
