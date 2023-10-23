@@ -41,7 +41,6 @@ requirements:
     - cloudpickle >=1.3
     - gast >=0.3.2
     - dm-tree
-    - typing-extensions <4.6.0
 
 test:
   imports:
