@@ -27,7 +27,7 @@ requirements:
     - pip
   run:
     - python >=3.8
-    - tensorflow-base ~=2.13.0
+    - tensorflow-base >=2.13.0, <2.14.0
     - jax >=0.4.14, <0.5.0
     - numpy >=1.13.3
     - absl-py
