@@ -13,18 +13,22 @@ source:
 
 build:
   noarch: python
-  number: 0
-  # The upstream directions say to use bazel, but this is
-  # all bazel ends up doing. Since our bazel package can have
-  # glibc version issues on CI, just do things this way.
+  number: 1
   script:
-    - rm -f BUILD
-    - {{ PYTHON }} -m pip install . --no-deps -vv
-
+    - bazel build :pip_pkg
+    - mkdir tmp-pkg
+    - ./bazel-bin/pip_pkg tmp-pkg
+    - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
+    
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - bazel 
   host:
     - python >=3.8
     - pip
+    - absl-py
   run:
     - python >=3.8
     - tensorflow-base >=2.13.0, <2.14.0
@@ -40,6 +44,7 @@ requirements:
 test:
   imports:
     - tensorflow_probability
+    - tensorflow_probability.substrates.jax
 
 about:
   home: https://www.tensorflow.org/probability/
