@@ -45,6 +45,7 @@ test:
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
+    - tensorflow_probability.substrates.numpy
 
 about:
   home: https://www.tensorflow.org/probability/
