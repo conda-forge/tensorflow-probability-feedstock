@@ -1,5 +1,5 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.22.1" %}
+{% set version = "0.23.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,32 +7,31 @@ package:
 
 source:
   url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: 9c1203b454aaeb48ac67dea862a411dba6b04f67c1e874e0e83bd1d7f13829a3
+  sha256: a00769550da9284acbd69e32a005507153ad39b0c190feca2bbbf6373366cc14
   patches:
     - 0001-always-build-release.patch
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script:
     - bazel build :pip_pkg
     - mkdir tmp-pkg
     - ./bazel-bin/pip_pkg tmp-pkg
     - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
-    
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - bazel 
+    - bazel
   host:
     - python >=3.9
     - pip
     - absl-py
   run:
     - python >=3.9
-    - tensorflow-base >=2.14.0, <2.15.0
-    - jax >=0.4.16, <0.5.0
+    - tensorflow-base >=2.15.0, <2.16.0
+    - jax >=0.4.20, <0.5.0
     - numpy >=1.13.3
     - absl-py
     - six >=1.10.0
