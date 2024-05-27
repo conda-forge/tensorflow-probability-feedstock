@@ -53,7 +53,6 @@ about:
   license_family: Apache
   license_file: LICENSE
   summary: TensorFlow Probability is a library for probabilistic reasoning and statistical analysis in TensorFlow
-
   description: |
     TensorFlow Probability is a library for probabilistic reasoning 
     and statistical analysis in TensorFlow. As part of the TensorFlow
