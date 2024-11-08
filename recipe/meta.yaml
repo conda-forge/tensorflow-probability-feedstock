@@ -49,6 +49,7 @@ test:
     - tf-keras
     - tensorflow-base
     - jax
+    - python {{ python_min }}
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
