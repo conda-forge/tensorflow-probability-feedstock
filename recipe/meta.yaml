@@ -46,9 +46,9 @@ requirements:
 
 test:
   requires:
-    - tf-keras
-    - tensorflow-base
-    - jax
+    - tf-keras >=2.18.0, <2.19.0
+    - tensorflow-base >=2.18.0, <2.19.0
+    - jax >=0.4.35, <0.5.0
     - python {{ python_min }}
   imports:
     - tensorflow_probability
