@@ -24,7 +24,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - bazel
+    - bazel <=6.5
   host:
     - python {{ python_min }}
     - pip
