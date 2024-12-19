@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script:
     - bazel build :pip_pkg
     - mkdir tmp-pkg
@@ -25,11 +25,11 @@ requirements:
     - {{ compiler('cxx') }}
     - bazel
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
     - absl-py
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - tensorflow-base >=2.16.0, <2.17.0
     - tf-keras >=2.16  # required as TFP only supports Keras2, see  https://github.com/tensorflow/probability/blob/v0.24.0/setup.py#L51
     - jax >=0.4.25, <0.5.0
@@ -42,6 +42,8 @@ requirements:
     - dm-tree
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
