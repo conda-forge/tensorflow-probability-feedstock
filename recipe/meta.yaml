@@ -49,7 +49,7 @@ test:
     - tensorflow_probability.substrates.numpy
 
 about:
-  home: https://www.tensorflow.org/probability/
+  home: https://pypi.org/project/tensorflow-probability/
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
