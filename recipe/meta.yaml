@@ -6,30 +6,19 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: 73cf3e52d3b5ee48fc919631e7fa3621849b8ce8d453017016a5148815856bc2
-  patches:
-    - 0001-always-build-release.patch
+  url: https://pypi.org/packages/py2.py3/t/tensorflow-probability/tensorflow_probability-{{ version }}-py2.py3-none-any.whl
+  sha256: f3f4d6431656c0122906888afe1b67b4400e82bd7f254b45b92e6c5b84ea8e3e
 
 build:
   noarch: python
   number: 0
-  script:
-    - bazel build :pip_pkg
-    - mkdir -p tmp-pkg
-    - ./bazel-bin/pip_pkg tmp-pkg
-    - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
+  script: {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation tensorflow_probability-{{ version }}-py2.py3-none-any.whl
+
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - bazel 6.*
   host:
     - python {{ python_min }}
     - pip
     - setuptools
-    - absl-py
   run:
     - python >={{ python_min }}
     - absl-py
@@ -42,12 +31,16 @@ requirements:
   run_constrained:
     - tensorflow >=2.16.0
     - tf-keras >=2.16  # Required as TFP only supports Keras 2
-    - tensorflow-datasets >= 2.2.0
+    - tensorflow-datasets >=2.2.0
     - jax >=0.4.35
 
 test:
   requires:
     - python {{ python_min }}
+    - tensorflow >=2.16.0
+    - tf-keras >=2.16
+    - tensorflow-datasets >=2.2.0
+    - jax >=0.4.35
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
