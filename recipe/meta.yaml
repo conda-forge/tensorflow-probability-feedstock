@@ -34,6 +34,12 @@ requirements:
     - tensorflow-datasets >=2.2.0
 
 test:
+  command:
+    - pip check
+  imports:
+    - tensorflow_probability
+    - tensorflow_probability.substrates.jax
+    - tensorflow_probability.substrates.numpy
   requires:
     - python {{ python_min }}
     - tensorflow >=2.16.0
@@ -41,10 +47,6 @@ test:
     - tensorflow-datasets >=2.2.0
     - jax
     - jaxlib
-  imports:
-    - tensorflow_probability
-    - tensorflow_probability.substrates.jax
-    - tensorflow_probability.substrates.numpy
 
 about:
   home: https://www.tensorflow.org/probability/
