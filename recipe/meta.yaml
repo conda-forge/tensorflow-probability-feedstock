@@ -32,7 +32,8 @@ requirements:
     - tensorflow >=2.16.0
     - tf-keras >=2.16  # Required as TFP only supports Keras 2
     - tensorflow-datasets >=2.2.0
-    - jax >=0.4.35
+    - jax
+    - jaxlib
 
 test:
   requires:
@@ -40,7 +41,8 @@ test:
     - tensorflow >=2.16.0
     - tf-keras >=2.16
     - tensorflow-datasets >=2.2.0
-    - jax >=0.4.35
+    - jax
+    - jaxlib
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
