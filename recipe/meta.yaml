@@ -34,7 +34,7 @@ requirements:
     - tensorflow-datasets >=2.2.0
 
 test:
-  command:
+  commands:
     - pip check
   imports:
     - tensorflow_probability
