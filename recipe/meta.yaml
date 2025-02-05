@@ -28,17 +28,16 @@ requirements:
     - cloudpickle >=1.3
     - gast >=0.3.2
     - dm-tree
-  run_constrained:
     - tensorflow >=2.16.0
-    - tf-keras >=2.16  # Required as TFP only supports Keras 2
+    # Required as TFP only supports Keras 2
+    - tf-keras >=2.16
+  run_constrained:
     - tensorflow-datasets >=2.2.0
 
 test:
   requires:
     - python {{ python_min }}
     - pip
-    - tensorflow >=2.16.0
-    - tf-keras >=2.16
     - tensorflow-datasets >=2.2.0
     - jax
     - jaxlib
