@@ -29,17 +29,20 @@ requirements:
     - gast >=0.3.2
     - dm-tree
   run_constrained:
-    # Optional dependencies: tensorflow and tf-keras / tensorflow-datasets / jax and jaxlib (without version constraints)
-    # tf-keras is required with TensorFlow as this package only supports Keras 2
+    # Optional dependencies: tensorflow and tf-keras / tensorflow-datasets / jax and jaxlib
+    # TensorFlow backend requires tf-keras as this package only supports Keras 2
     - tensorflow-base >=2.18.0,<2.19.0
     - tf-keras >=2.18
     - tensorflow-datasets >=2.2.0
+    - jax >=0.4.35,<0.5.0
 
 test:
   requires:
     - python {{ python_min }}
     - pip
-    - tensorflow-datasets >=2.2.0
+    - tensorflow-base
+    - tf-keras
+    - tensorflow-datasets
     - jax
     - jaxlib
   commands:
