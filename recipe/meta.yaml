@@ -34,7 +34,7 @@ requirements:
     - tensorflow-base >=2.18.0
     - tf-keras >=2.18.0
     - tensorflow-datasets >=2.2.0
-    - jax >=0.4.35,<0.5.0
+    - jax >=0.4.35
 
 test:
   requires:
