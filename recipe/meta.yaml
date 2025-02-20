@@ -1,54 +1,59 @@
 {% set name = "tensorflow-probability" %}
-{% set version = "0.24.0" %}
+{% set version = "0.25.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
-  sha256: 3d75418cef09ea357ee879347133ab784fe4637a5ba251a8e06ef930dd970a3e
-  patches:
-    - 0001-always-build-release.patch
+  url: https://pypi.org/packages/py2.py3/t/tensorflow-probability/tensorflow_probability-{{ version }}-py2.py3-none-any.whl
+  sha256: f3f4d6431656c0122906888afe1b67b4400e82bd7f254b45b92e6c5b84ea8e3e
 
 build:
   noarch: python
   number: 0
-  script:
-    - bazel build :pip_pkg
-    - mkdir tmp-pkg
-    - ./bazel-bin/pip_pkg tmp-pkg
-    - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
+  script: {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation tensorflow_probability-{{ version }}-py2.py3-none-any.whl
+
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - bazel
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
-    - absl-py
+    - setuptools
   run:
-    - python >=3.9
-    - tensorflow-base >=2.16.0, <2.17.0
-    - tf-keras >=2.16  # required as TFP only supports Keras2, see  https://github.com/tensorflow/probability/blob/v0.24.0/setup.py#L51
-    - jax >=0.4.25, <0.5.0
-    - numpy >=1.13.3
+    - python >={{ python_min }}
     - absl-py
     - six >=1.10.0
+    - numpy >=1.13.3
     - decorator
     - cloudpickle >=1.3
     - gast >=0.3.2
     - dm-tree
+  run_constrained:
+    # Optional dependencies: tensorflow and tf-keras / tensorflow-datasets / jax and jaxlib
+    # TensorFlow backend requires tf-keras as this package only supports Keras 2
+    - tensorflow-base >=2.18.0
+    - tf-keras >=2.18.0
+    - tensorflow-datasets >=2.2.0
+    - jax >=0.4.35
 
 test:
+  requires:
+    # JAX is only available with Python >=3.10, but Python 3.9 should work with other backends
+    - python 3.10
+    - pip
+    - tensorflow-base
+    - tf-keras
+    - tensorflow-datasets
+    - jax
+  commands:
+    - pip check
   imports:
     - tensorflow_probability
     - tensorflow_probability.substrates.jax
     - tensorflow_probability.substrates.numpy
 
 about:
-  home: https://www.tensorflow.org/probability/
+  home: https://pypi.org/project/tensorflow-probability/
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -72,3 +77,4 @@ extra:
     - oblute
     - rluria14
     - jonas-eschle
+    - ehfd

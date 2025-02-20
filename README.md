@@ -3,7 +3,7 @@ About tensorflow-probability-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tensorflow-probability-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.tensorflow.org/probability/
+Home: https://pypi.org/project/tensorflow-probability/
 
 Package license: Apache-2.0
 
@@ -157,6 +157,7 @@ Feedstock Maintainers
 =====================
 
 * [@adbedada](https://github.com/adbedada/)
+* [@ehfd](https://github.com/ehfd/)
 * [@jonas-eschle](https://github.com/jonas-eschle/)
 * [@mxr-conda](https://github.com/mxr-conda/)
 * [@oblute](https://github.com/oblute/)
