@@ -38,13 +38,13 @@ requirements:
 
 test:
   requires:
-    - python {{ python_min }}
+    # JAX is only available with Python >=3.10, but Python 3.9 should work with other backends
+    - python 3.10
     - pip
     - tensorflow-base
     - tf-keras
     - tensorflow-datasets
     - jax
-    - jaxlib
   commands:
     - pip check
   imports:
