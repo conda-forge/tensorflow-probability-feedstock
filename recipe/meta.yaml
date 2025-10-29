@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
   sha256: 73cf3e52d3b5ee48fc919631e7fa3621849b8ce8d453017016a5148815856bc2
+  patches:
+    - 001-fix_jax_pytype_mapping.patch
 
 build:
   noarch: python
@@ -17,8 +19,6 @@ build:
     - mkdir -p tmp-pkg
     - ./bazel-bin/pip_pkg tmp-pkg
     - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
-  patches:
-    - 001-fix_jax_pytype_mapping.patch
 
 requirements:
   build:
