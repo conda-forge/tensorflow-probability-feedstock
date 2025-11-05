@@ -6,19 +6,31 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/py2.py3/t/tensorflow-probability/tensorflow_probability-{{ version }}-py2.py3-none-any.whl
-  sha256: f3f4d6431656c0122906888afe1b67b4400e82bd7f254b45b92e6c5b84ea8e3e
+  url: https://github.com/tensorflow/probability/archive/v{{ version }}.tar.gz
+  sha256: 73cf3e52d3b5ee48fc919631e7fa3621849b8ce8d453017016a5148815856bc2
+  patches:
+    - 001-fix_jax_pytype_mapping.patch
 
 build:
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation tensorflow_probability-{{ version }}-py2.py3-none-any.whl
+  number: 1
+  script:
+    - bazel build --copt=-O3 --copt=-march=native :pip_pkg
+    - mkdir -p tmp-pkg
+    - ./bazel-bin/pip_pkg tmp-pkg
+    - "{{ PYTHON }} -m pip install --upgrade --no-deps -vv tmp-pkg/*.whl"
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - {{ compiler('cxx') }}
+    - absl-py
+    - bazel <7
+    - setuptools
   host:
     - python {{ python_min }}
     - pip
-    - setuptools
   run:
     - python >={{ python_min }}
     - absl-py
@@ -38,13 +50,11 @@ requirements:
 
 test:
   requires:
-    # JAX is only available with Python >=3.10, but Python 3.9 should work with other backends
-    - python 3.10
+    # JAX is only available with Python >=3.11, but Python 3.9 could work with NumPy backend only
+    # We test with newest JAX version since there were breaking changes in v0.7.0
+    - python =3.11
     - pip
-    - tensorflow-base
-    - tf-keras
-    - tensorflow-datasets
-    - jax
+    - jax >=0.7
   commands:
     - pip check
   imports:
@@ -59,7 +69,7 @@ about:
   license_file: LICENSE
   summary: TensorFlow Probability is a library for probabilistic reasoning and statistical analysis in TensorFlow
   description: |
-    TensorFlow Probability is a library for probabilistic reasoning 
+    TensorFlow Probability is a library for probabilistic reasoning
     and statistical analysis in TensorFlow. As part of the TensorFlow
     ecosystem, TensorFlow Probability provides integration of
     probabilistic methods with deep networks, gradient-based inference
@@ -78,3 +88,4 @@ extra:
     - rluria14
     - jonas-eschle
     - ehfd
+    - flferretti
