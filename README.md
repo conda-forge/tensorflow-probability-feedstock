@@ -158,6 +158,7 @@ Feedstock Maintainers
 
 * [@adbedada](https://github.com/adbedada/)
 * [@ehfd](https://github.com/ehfd/)
+* [@flferretti](https://github.com/flferretti/)
 * [@jonas-eschle](https://github.com/jonas-eschle/)
 * [@mxr-conda](https://github.com/mxr-conda/)
 * [@oblute](https://github.com/oblute/)
